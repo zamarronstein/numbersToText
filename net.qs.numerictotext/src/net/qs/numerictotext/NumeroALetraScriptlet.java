@@ -199,20 +199,28 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 				
 				if (decenas == 1 || decenas == 2) {
 					
-					text+= equivalencias.get(unidades).getNombreUnidades();
-				} else if (decenas >= 3){
-					
-					text+= "Y " + equivalencias.get(unidades).getNombreUnidades();
-				} else if (unidades == 1 && numeroClase == 1) {
-						
-						text+= UN;
+					if (unidades == 1 && numeroClase > 0) {
+						text+=UN;
 					} else {
 						
 						text+= equivalencias.get(unidades).getNombreUnidades();
 					}
+				} else if (decenas >= 3){
+					
+					if (unidades == 1 && numeroClase > 0) {
+
+						text+= "Y " + UN;
+					} else {
+						
+						text+= "Y " + equivalencias.get(unidades).getNombreUnidades();
+					}
+				} else {
+					
+						text+= equivalencias.get(unidades).getNombreUnidades();
 				}
-			text += " " + getNombreEscala(numeroClase);
+			}
 			
+			text+= " " + getNombreEscala(numeroClase);
 		} catch (Exception e) {
 			
 		}

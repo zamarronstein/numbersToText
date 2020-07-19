@@ -25,5 +25,6 @@ public class Test {
 		System.out.println("Numero a letra: " + scriptlet.convertir(BigDecimal.valueOf(41199)));
 		System.out.println("Numero a letra: " + scriptlet.convertir(BigDecimal.valueOf(51613)));
 		System.out.println("Numero a letra: " + scriptlet.convertir(BigDecimal.valueOf(71505)));
+		System.out.println("Numero a letra: " + scriptlet.convertir(BigDecimal.valueOf(21505)));
 	}
 }
