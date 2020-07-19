@@ -58,9 +58,9 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		escalas.put(0, new Escala(""));
 		escalas.put(1, new Escala("MIL", "MILES"));
 		escalas.put(2, new Escala("MILLÓN", "MILLONES"));
-		escalas.put(3, new Escala("MIL MILLONES"));
+		escalas.put(3, new Escala("MIL", "MIL"));
 		escalas.put(4, new Escala("BILLÓN", "BILLONES"));
-		escalas.put(5, new Escala("MIL BILLONES"));
+		escalas.put(5, new Escala("MIL", "MIL"));
 	}
 	
 	/**
@@ -183,7 +183,7 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 					if (decenas == 1 || decenas == 2) {
 						
 						if (decenas == 2 && unidades == 0) {
-							text+= equivalencias.get(2).getNombreDecenas();
+							text+= VEINTE;
 						} else {
 							
 							text+=equivalencias.get(decenas).getNombreDecenas();
@@ -232,11 +232,11 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		return text;
 	}
 
-	private String getNombreEscala(Integer unidades, Integer decenas, Integer Centenas, Integer numeroClase) {
+	private String getNombreEscala(Integer unidades, Integer decenas, Integer centenas, Integer numeroClase) {
 
 		String escala = "";
 
-		if (unidades == 1 && numeroClase > 0) {
+		if ((unidades == 1) && (decenas == 0) && (centenas == 0) && (numeroClase > 0)) {
 			escala = escalas.get(numeroClase).getNombreSingular();
 		} else if (numeroClase == 1) {
 			
