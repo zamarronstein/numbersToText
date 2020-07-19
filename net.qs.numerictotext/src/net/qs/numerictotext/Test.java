@@ -12,19 +12,12 @@ public class Test {
 		
 		NumeroALetraScriptlet scriptlet = new NumeroALetraScriptlet();
 		
-		/**
 		for (int i = 0; i < 10; i++) {
 			
-			BigDecimal numeroRandom = new BigDecimal(BigInteger.valueOf(new Random().nextInt(100000)), 0);
+			BigDecimal numeroRandom = new BigDecimal(BigInteger.valueOf(new Random().nextInt(10000000)), 0);
 			
 
 			System.out.println("Numero " + numeroRandom + " a letra: " + scriptlet.convertir(numeroRandom));
 		}
-		**/
-		
-		System.out.println("Numero a letra: " + scriptlet.convertir(BigDecimal.valueOf(41199)));
-		System.out.println("Numero a letra: " + scriptlet.convertir(BigDecimal.valueOf(51613)));
-		System.out.println("Numero a letra: " + scriptlet.convertir(BigDecimal.valueOf(71505)));
-		System.out.println("Numero a letra: " + scriptlet.convertir(BigDecimal.valueOf(21505)));
 	}
 }

@@ -216,11 +216,15 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 					}
 				} else {
 					
+					if (unidades == 1 && numeroClase > 0) {
+						text+=UN;
+					} else {
 						text+= equivalencias.get(unidades).getNombreUnidades();
+					}
 				}
 			}
 			
-			text+= " " + getNombreEscala(numeroClase);
+			text+= " " + getNombreEscala(unidades, decenas, centenas, numeroClase);
 		} catch (Exception e) {
 			
 		}
@@ -228,8 +232,25 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		return text;
 	}
 
-	private String getNombreEscala(Integer numeroClase) {
-		// TODO Auto-generated method stub
-		return escalas.get(numeroClase).getNombreSingular();
+	private String getNombreEscala(Integer unidades, Integer decenas, Integer Centenas, Integer numeroClase) {
+
+		String escala = "";
+
+		if (unidades == 1 && numeroClase > 0) {
+			escala = escalas.get(numeroClase).getNombreSingular();
+		} else if (numeroClase == 1) {
+			
+			escala = escalas.get(numeroClase).getNombreSingular();
+		} else {
+			
+			if (escalas.get(numeroClase).getNombrePlural() != null) {
+				
+				escala = escalas.get(numeroClase).getNombrePlural();
+			} else {
+				escala = "";
+			}
+		}
+	
+		return escala;
 	}
 }
