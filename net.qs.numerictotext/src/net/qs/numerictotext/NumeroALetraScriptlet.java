@@ -20,6 +20,7 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 	private final static String TRECE = "TRECE";
 	private final static String CATORCE = "CATORCE";
 	private final static String QUINCE = "QUINCE";
+	private final static String VEINTE = "VEINTE";
 
 	private Map<Integer, Equivalencia> equivalencias;
 	private Map<Integer, Escala> escalas;
@@ -179,7 +180,18 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 					enterDiezToQuince = Boolean.TRUE;
 				} else {
 					
-					text+=equivalencias.get(decenas).getNombreDecenas() + " ";
+					if (decenas == 1 || decenas == 2) {
+						
+						if (decenas == 2 && unidades == 0) {
+							text+= equivalencias.get(2).getNombreDecenas();
+						} else {
+							
+							text+=equivalencias.get(decenas).getNombreDecenas();
+						}
+					} else {
+						
+						text+=equivalencias.get(decenas).getNombreDecenas() + " ";
+					}
 				}
 			}
 			
