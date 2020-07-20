@@ -10,6 +10,7 @@ import net.sf.jasperreports.engine.JRScriptletException;
 
 public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 	
+	private final static String CERO = "CERO";
 	private final static String UN = "UN";
 	private final static String DIEZ = "DIEZ";
 	private final static String ONCE = "ONCE";
@@ -53,7 +54,7 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 	private void initUnidades() {
 		// TODO Auto-generated method stub
 		escalas.put(0, new Escala(""));
-		escalas.put(1, new Escala("MIL", "MILES"));
+		escalas.put(1, new Escala("MIL", "MIL"));
 		escalas.put(2, new Escala("MILLÓN", "MILLONES"));
 		escalas.put(3, new Escala("MIL", "MIL"));
 		escalas.put(4, new Escala("BILLÓN", "BILLONES"));
@@ -73,8 +74,10 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		if (numero != null) {
 			
 			String strNumero = numero.toString();
-
-			if ((strNumero.length() > 0) && (strNumero.length() <= 18)) {
+			
+			if (strNumero.compareTo("0") == 0) {
+				numeroConvertido = CERO;
+			} else if ((strNumero.length() > 0) && (strNumero.length() <= 24)) {
 				
 				numeroConvertido = procesar(strNumero);
 			}
@@ -183,7 +186,7 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 					if (decenas == 1 || decenas == 2) {
 						
 						if (decenas == 2 && unidades == 0) {
-							text+= VEINTE;
+							text+= VEINTE + " ";
 						} else {
 							
 							text+=equivalencias.get(decenas).getNombreDecenas();
