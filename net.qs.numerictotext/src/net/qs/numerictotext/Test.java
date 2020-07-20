@@ -25,12 +25,15 @@ public class Test {
 					.multiply(diez)
 					.multiply(diez)
 					.multiply(diez)
+					.multiply(diez)
+					.multiply(diez)
+					.multiply(diez)
+					.multiply(diez)
 					.multiply(diez);
 			
 			numeroRandom = numeroRandom.setScale(0, BigDecimal.ROUND_DOWN);
 
 			System.out.println("Numero " + numeroRandom + " a letra: " + scriptlet.convertir(numeroRandom));
 		}
-		
 	}
 }

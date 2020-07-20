@@ -1,7 +1,6 @@
 package net.qs.numerictotext;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +10,6 @@ import net.sf.jasperreports.engine.JRScriptletException;
 
 public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 	
-	private final static Integer TAMANIO_PERIODOS = 6;
-	private final static Integer TAMANIO_CLASE = 3;
 	private final static String UN = "UN";
 	private final static String DIEZ = "DIEZ";
 	private final static String ONCE = "ONCE";
@@ -61,6 +58,8 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		escalas.put(3, new Escala("MIL", "MIL"));
 		escalas.put(4, new Escala("BILLÓN", "BILLONES"));
 		escalas.put(5, new Escala("MIL", "MIL"));
+		escalas.put(6, new Escala("TRILLÓN", "TRILLONES"));
+		escalas.put(7, new Escala("MIL", "MIL"));
 	}
 	
 	/**
@@ -177,6 +176,7 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 						case 14: text+=CATORCE; break;
 						case 15: text+=QUINCE; break;
 					}
+					text+= " ";
 					enterDiezToQuince = Boolean.TRUE;
 				} else {
 					
@@ -203,28 +203,34 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 						text+=UN;
 					} else {
 						
-						text+= equivalencias.get(unidades).getNombreUnidades();
+						text+= equivalencias.get(unidades).getNombreUnidades() + " ";
 					}
 				} else if (decenas >= 3){
 					
 					if (unidades == 1 && numeroClase > 0) {
 
-						text+= "Y " + UN;
+						text+= "Y " + UN + " ";
 					} else {
 						
-						text+= "Y " + equivalencias.get(unidades).getNombreUnidades();
+						text+= "Y " + equivalencias.get(unidades).getNombreUnidades() + " ";
 					}
 				} else {
 					
 					if (unidades == 1 && numeroClase > 0) {
-						text+=UN;
+						if (unidades == 1 && decenas == 0 && centenas == 0) {
+							
+							text+="";
+						} else {
+							
+							text+=UN + " ";
+						}
 					} else {
-						text+= equivalencias.get(unidades).getNombreUnidades();
+						text+= equivalencias.get(unidades).getNombreUnidades() + " ";
 					}
 				}
 			}
 			
-			text+= " " + getNombreEscala(unidades, decenas, centenas, numeroClase);
+			text+= getNombreEscala(unidades, decenas, centenas, numeroClase);
 		} catch (Exception e) {
 			
 		}
