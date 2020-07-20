@@ -23,15 +23,21 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 	private Map<Integer, Equivalencia> equivalencias;
 	private Map<Integer, Escala> escalas;
 
+	/**
+	 * Método constructor que inicializa las equivalencias y las escalas
+	 * */
 	public NumeroALetraScriptlet() {
 		
 		super();
 		equivalencias = new HashMap<Integer, Equivalencia>();
 		escalas = new HashMap<Integer, Escala>();
 		initEquivalencias();
-		initUnidades();
+		initEscalas();
 	}
 	
+	/**
+	 * Método que inicializa las equivalencias de números
+	 * */
 	private void initEquivalencias() {
 		equivalencias.clear();
 		//equivalencias.put(0, new Equivalencia("CERO", ""));
@@ -51,7 +57,7 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 	 * Método para inicializar el tipo de unidades
 	 * Por ejemplo: unidades de millar, unidades de millón, etc.
 	 * */
-	private void initUnidades() {
+	private void initEscalas() {
 		// TODO Auto-generated method stub
 		escalas.put(0, new Escala(""));
 		escalas.put(1, new Escala("MIL", "MIL"));
@@ -86,12 +92,16 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		return numeroConvertido.toString();
 	}
 	
+	/**
+	 * Método para procesar la cadena a convertir
+	 * @param strNumero
+	 * */
 	private String procesar(String strNumero) {
 		
 		String conversion = "";
-		String reverseNumero = reverse(strNumero);
-		List<String> clases = separateInClases(reverseNumero);
-		List<String> clasesConvertidas = new ArrayList<>();
+		String reverseNumero = reverse(strNumero); // hacemos el reverse de la cadena
+		List<String> clases = separateInClases(reverseNumero); // Separamos las cadenas en clases
+		List<String> clasesConvertidas = new ArrayList<>(); // Lista para guardar las clases ya convertidas
 		
 		if (!clases.isEmpty()) {
 			for (int i = 0; i < clases.size(); i++) {
@@ -111,6 +121,10 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		return conversion;
 	}
 	
+	/**
+	 * Método para hacer el reverse de una cadena
+	 * @param str
+	 * */
 	private String reverse(String str) {
 		
 		String reverse = "";
@@ -122,6 +136,10 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		return reverse;
 	}
 	
+	/**
+	 * Método para separar la cadena (al revés) en clases de a tres carácteres cada una
+	 * @param reverseNumero
+	 * */
 	private List<String> separateInClases(String reverseNumero) {
 
 		List<String> clases = new ArrayList<>();
@@ -139,6 +157,11 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		return clases;
 	}
 
+	/**
+	 * Método para convertir un número a texto
+	 * @param clase
+	 * @para numeroClase
+	 * */
 	private String numberToText(String clase, Integer numeroClase) {
 		// TODO Auto-generated method stub
 		String text = "";
@@ -241,6 +264,10 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 		return text;
 	}
 
+	/**
+	 * Método para obtener el nombre de la escala, ya sea miles, millones, billones, etcétera, 
+	 * dependiendo del número de clase
+	 * */
 	private String getNombreEscala(Integer unidades, Integer decenas, Integer centenas, Integer numeroClase) {
 
 		String escala = "";
