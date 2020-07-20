@@ -220,7 +220,7 @@ public class NumeroALetraScriptlet extends JRDefaultScriptlet {
 				} else {
 					
 					if (unidades == 1 && numeroClase > 0) {
-						if (unidades == 1 && decenas == 0 && centenas == 0) {
+						if ((unidades == 1 && decenas == 0 && centenas == 0) && (numeroClase == 1)) {
 							
 							text+="";
 						} else {

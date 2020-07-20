@@ -16,10 +16,13 @@ public class Test {
 			
 			// BigDecimal numeroRandom = new BigDecimal(BigInteger.valueOf(new Random().nextInt(1000000000)), 0);
 			
-			BigDecimal max = new BigDecimal(10000000);
+			BigDecimal max = new BigDecimal(1000000000);
 			BigDecimal diez = new BigDecimal(10);
 			BigDecimal randFromDouble = new BigDecimal(Math.random());
 			BigDecimal numeroRandom = randFromDouble.multiply(max)
+					.multiply(diez)
+					.multiply(diez)
+					.multiply(diez)
 					.multiply(diez)
 					.multiply(diez)
 					.multiply(diez)
