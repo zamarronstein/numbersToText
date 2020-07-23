@@ -1,4 +1,4 @@
-package net.qs.numerictotext;
+package net.quarksoft.numeroaletras;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;

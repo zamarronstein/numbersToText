@@ -1,4 +1,4 @@
-package net.qs.numerictotext;
+package net.quarksoft.numeroaletras;
 
 public class Equivalencia {
 	private String nombreUnidades;

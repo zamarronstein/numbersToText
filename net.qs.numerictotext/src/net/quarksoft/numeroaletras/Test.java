@@ -1,8 +1,6 @@
-package net.qs.numerictotext;
+package net.quarksoft.numeroaletras;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Random;
 
 import net.sf.jasperreports.engine.JRScriptletException;
 
@@ -12,6 +10,7 @@ public class Test {
 		
 		NumeroALetraScriptlet scriptlet = new NumeroALetraScriptlet();
 		
+		/**
 		for (int i = 0; i < 10; i++) {
 			
 			// BigDecimal numeroRandom = new BigDecimal(BigInteger.valueOf(new Random().nextInt(1000000000)), 0);
@@ -40,7 +39,8 @@ public class Test {
 
 			System.out.println("Numero " + numeroRandom + " a letra: " + scriptlet.convertir(numeroRandom));
 		}
+		**/
 
-		// System.out.println("Numero 320313155432543905 a letra: " + scriptlet.convertir(new BigDecimal(320313155432543905L)));
+		System.out.println("Numero 320313155432543905 a letra: " + scriptlet.convertir(new BigDecimal(320313155432543905L)));
 	}
 }
